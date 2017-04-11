@@ -1,0 +1,7 @@
+*.svg
+__pycache__/*
+.idea/*
+.Rhistory
+/Cytoscape.cys
+*.csv
+/geckodriver.log
