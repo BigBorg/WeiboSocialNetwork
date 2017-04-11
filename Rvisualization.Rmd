@@ -23,7 +23,7 @@ relations <- read.csv("relation.csv")
 tmp <- merge(relations, users, by.x="from", by.y="id")
 names(tmp)[3:6] <- c("from_location", "from_nike", "from_layer", "from_gender")
 merged <- merge(tmp, users, by.x="to", by.y = "id")
-names(merged)[7:10] <- c("to_location", "to_nike", "to_layer", "to_gender") 
+names(merged)[7:10] <- c("to_location", "to_nike", "to_layer", "to_gender")
 head(merged)
 write.csv(merged, "Networkdata.csv")
 ```
@@ -31,8 +31,8 @@ write.csv(merged, "Networkdata.csv")
 ## 数据  
 一共爬取的用户数量，关注的关系链数量
 ```{r}
-num_users <- nrow(users)
-num_edges <- nrow(relations)
+nrow(users)
+nrow(relations)
 ```
 
 男女用户数
@@ -47,8 +47,8 @@ table(users$layer)
 
 直接关注的用户昵称
 ```{r}
-myfollower <- users$nike[users$layer==1]
-myfollower[1:8]
+myfollow <- users$nike[users$layer==1]
+myfollow[1:8]
 ```
 
 按被关注数排序，因为是从lbgandthesun本人开始往下爬取的，所以在此lbgandthesun被关注的数量会比较高，注意此处数据不为用户的粉丝数，而是只限于爬取的范围内的统计，不包括第2层的关注，因为第二层的关注列表未爬，数据量太大。总之此处就是一级好友共同关注最多的用户。

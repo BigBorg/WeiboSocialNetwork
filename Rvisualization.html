@@ -152,7 +152,7 @@ relations &lt;- read.csv(&quot;relation.csv&quot;)
 tmp &lt;- merge(relations, users, by.x=&quot;from&quot;, by.y=&quot;id&quot;)
 names(tmp)[3:6] &lt;- c(&quot;from_location&quot;, &quot;from_nike&quot;, &quot;from_layer&quot;, &quot;from_gender&quot;)
 merged &lt;- merge(tmp, users, by.x=&quot;to&quot;, by.y = &quot;id&quot;)
-names(merged)[7:10] &lt;- c(&quot;to_location&quot;, &quot;to_nike&quot;, &quot;to_layer&quot;, &quot;to_gender&quot;) 
+names(merged)[7:10] &lt;- c(&quot;to_location&quot;, &quot;to_nike&quot;, &quot;to_layer&quot;, &quot;to_gender&quot;)
 head(merged)</code></pre>
 <pre><code>##           to       from from_location    from_nike from_layer from_gender
 ## 1      10503 1814392721                 程序员幽默          1        male
@@ -173,8 +173,10 @@ head(merged)</code></pre>
 <div class="section level2">
 <h2>数据</h2>
 <p>一共爬取的用户数量，关注的关系链数量</p>
-<pre class="r"><code>num_users &lt;- nrow(users)
-num_edges &lt;- nrow(relations)</code></pre>
+<pre class="r"><code>nrow(users)</code></pre>
+<pre><code>## [1] 5017</code></pre>
+<pre class="r"><code>nrow(relations)</code></pre>
+<pre><code>## [1] 5784</code></pre>
 <p>男女用户数</p>
 <pre class="r"><code>table(users$gender)</code></pre>
 <pre><code>## 
@@ -186,8 +188,8 @@ num_edges &lt;- nrow(relations)</code></pre>
 ##    0    1    2 
 ##    1   60 4956</code></pre>
 <p>直接关注的用户昵称</p>
-<pre class="r"><code>myfollower &lt;- users$nike[users$layer==1]
-myfollower[1:8]</code></pre>
+<pre class="r"><code>myfollow &lt;- users$nike[users$layer==1]
+myfollow[1:8]</code></pre>
 <pre><code>## [1] 版权家官微         Ubuntu             KungManager       
 ## [4] 肥仔倖             微博开放平台       不正常人类调研中心
 ## [7] 阿福Thomas         程序员幽默        
